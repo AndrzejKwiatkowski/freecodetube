@@ -3,12 +3,13 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\video;
+use common\models\Video;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+
 
 /**
  * VideoController implements the CRUD actions for video model.
@@ -37,7 +38,7 @@ class VideoController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => video::find(),
+            'query' => Video::find(),
         ]);
 
         return $this->render('index', [
@@ -65,13 +66,14 @@ class VideoController extends Controller
      */
     public function actionCreate()
     {
-        $model = new video();
-        $file = UploadedFile::getInstancesByName('video');
-       
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $model = new Video();
+        $model->video = UploadedFile::getInstanceByName('video');
+        
+        if (Yii::$app->request->isPost && $model->save()) {
             return $this->redirect(['view', 'id' => $model->video_id]);
         }
+
+       // var_dump($model->load(Yii::$app->request->post()));
 
         return $this->render('create', [
             'model' => $model,
