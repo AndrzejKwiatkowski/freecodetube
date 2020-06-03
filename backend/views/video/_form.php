@@ -16,6 +16,8 @@ use common\models\video;
     ]); ?>
     <div class="row">
         <div class="col-sm-8">
+            <?php echo $form->errorSummary($model) ?>
+
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
