@@ -7,6 +7,7 @@ use common\models\video;
 /* @var $this yii\web\View */
 /* @var $model common\models\video */
 /* @var $form yii\bootstrap4\ActiveForm */
+\backend\assets\TagsInputAsset::register($this)
 ?>
 
 <div class="video-form">
@@ -33,7 +34,9 @@ use common\models\video;
             </div>
           
 
-            <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'tags', [
+                'inputOptions' => ['data-role' => 'tagsinput']
+            ])->textInput(['maxlength' => true]) ?>
 
         </div>
         <div class="col-sm-4">
