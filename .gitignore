@@ -43,4 +43,4 @@ phpunit.phar
 /backend/web/robots.txt
 
 #storage
-/frontend/web/storage/videos
+/frontend/web/storage

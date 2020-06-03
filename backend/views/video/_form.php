@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use common\models\video;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\video */
@@ -10,19 +11,33 @@ use yii\bootstrap4\ActiveForm;
 
 <div class="video-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
     <div class="row">
         <div class="col-sm-8">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
+            <div class="form-group">
+                <label><?php echo $model->getAttributeLabel('thumbnail'); ?></dlabeliv>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" 
+                    id="thumbnail" 
+                    name="thumbnail">
+                    <label class="custom-file-label" for="thumbnail">Choose file</label>
+                </div>
+            </div>
+          
+
             <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
 
         </div>
         <div class="col-sm-4">
-            <div class="embed-responsive embed-responsive-16by9">
-                <video class="embed-responsive-item" 
+            <div class="embed-responsive embed-responsive-16by9 mb-3">
+                <video class="embed-responsive-item"
+                poster="<?php echo $model->getThumbnailLink() ?>" 
                 src="<?php echo $model->getVideoLink() ?>" 
                 controls></video>
             </div>
@@ -40,7 +55,7 @@ use yii\bootstrap4\ActiveForm;
                 <?php echo $model->video_name ?>
             </div>
             
-            <?= $form->field($model, 'status')->textInput() ?>
+            <?= $form->field($model, 'status')->dropDownList($model->getStatusLabels()) ?>
 
         </div>
     </div>
