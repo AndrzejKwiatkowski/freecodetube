@@ -48,7 +48,9 @@ class VideoController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Video::find(),
+            'query' => Video::find()
+            ->creator(Yii::$app->user->id)
+            ->latest()
         ]);
 
         return $this->render('index', [
@@ -65,7 +67,7 @@ class VideoController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id)
         ]);
     }
 
