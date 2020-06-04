@@ -30,6 +30,7 @@ use Imagine\Image\Box;
  */
 class Video extends \yii\db\ActiveRecord
 {
+    
     const STATUS_UNLISTED = 0;
     const STATUS_PUBLISHED = 1;
     /**
