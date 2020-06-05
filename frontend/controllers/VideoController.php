@@ -3,6 +3,7 @@ namespace frontend\controllers;
 use yii\web\Controller;
 use yii\data\ActiveDataProvider;
 use common\models\Video;
+use common\models\VideoView;
 use yii\web\NotFoundHttpException;
 
 class VideoController extends Controller
@@ -25,6 +26,12 @@ class VideoController extends Controller
             throw new NotFoundHttpException("Video dose not exist");
          
         }
+
+        $viedoView = new VideoView();
+        $viedoView->video_id = $id;
+        $viedoView->user_id = \Yii::$app->user->id;
+        $viedoView->created_at = time();
+        $viedoView->save();
         return $this->render('view', [
             'model' => $video
         ]);

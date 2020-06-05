@@ -109,6 +109,14 @@ class Video extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
+    /**
+     * @return \yii\db\ActiveQuery 
+     */
+    public function getViews()
+    {
+        return $this->hasMany(VideoView::class, ['video_id' => 'video_id']);
+    }
+    
 
     /**
      * {@inheritdoc}

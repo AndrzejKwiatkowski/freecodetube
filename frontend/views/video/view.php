@@ -14,7 +14,8 @@
         <h6 class="mt-2"><?php echo $model->title ?></h6>
         <div class="d-flex justify-content-between align-items-center">
             <div>
-                123 view • <?php echo Yii::$app->formatter->asDate($model->created_at)?>
+                <?php echo $model->getViews()->count() ?> • views
+                <?php echo Yii::$app->formatter->asDate($model->created_at)?>
             </div>
             <div>
                 <button class="btn btn-sm btn-outline-primary">9
