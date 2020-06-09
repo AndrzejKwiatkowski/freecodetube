@@ -30,6 +30,10 @@ use yii\widgets\Pjax;
                 <?php Pjax::end()?>
             </div>
         </div>
+        <div>
+            <p><?php echo \common\helpers\Html::channelLink($model->createdBy) ?></p>
+            <?php echo Html::encode($model->description) ?>
+        </div>
         
     </div>
     <div class="col-sm-4">
