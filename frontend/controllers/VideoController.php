@@ -56,8 +56,17 @@ class VideoController extends Controller
         $viedoView->user_id = \Yii::$app->user->id;
         $viedoView->created_at = time();
         $viedoView->save();
+
+        $similarVideos = Video::find()
+                ->published()
+                ->byKeyword($video->title)
+                ->andWhere(['NOT', ['video_id' => $id]])
+                ->limit(10)
+                ->all();
+
         return $this->render('view', [
-            'model' => $video
+            'model' => $video,
+            'similarVideos' => $similarVideos
         ]);
     }
     public function actionLike($id)
