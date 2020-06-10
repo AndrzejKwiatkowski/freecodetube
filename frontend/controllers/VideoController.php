@@ -40,7 +40,10 @@ class VideoController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Video::find()->with('createdBy')->published()->latest()
+            'query' => Video::find()->with('createdBy')->published()->latest(),
+            'pagination' => [
+                'pageSize' => 4
+            ]
         ]);
         return $this->render('index', [
             'dataProvider' => $dataProvider
@@ -116,6 +119,7 @@ class VideoController extends Controller
     public function actionSearch($keyword)
     {
         $query = Video::find()
+            ->with('createdBy')
             ->published()
             ->latest();
             
