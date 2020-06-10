@@ -25,14 +25,12 @@ use common\models\video;
 
             <div class="form-group">
                 <label><?php echo $model->getAttributeLabel('thumbnail'); ?></dlabeliv>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" 
-                    id="thumbnail" 
-                    name="thumbnail">
-                    <label class="custom-file-label" for="thumbnail">Choose file</label>
-                </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="thumbnail" name="thumbnail">
+                        <label class="custom-file-label" for="thumbnail">Choose file</label>
+                    </div>
             </div>
-          
+
 
             <?= $form->field($model, 'tags', [
                 'inputOptions' => ['data-role' => 'tagsinput']
@@ -41,25 +39,23 @@ use common\models\video;
         </div>
         <div class="col-sm-4">
             <div class="embed-responsive embed-responsive-16by9 mb-3">
-                <video class="embed-responsive-item"
-                poster="<?php echo $model->getThumbnailLink() ?>" 
-                src="<?php echo $model->getVideoLink() ?>" 
-                controls></video>
+                <video class="embed-responsive-item" poster="<?php echo $model->getThumbnailLink() ?>"
+                    src="<?php echo $model->getVideoLink() ?>" controls></video>
             </div>
-            
+
             <div class="mb-3">
                 <div class="text-muted">Video Link</div>
                 <a href="<?php echo $model->getVideoLink() ?>">
-                Open Video
+                    Open Video
                 </a>
-                
+
             </div>
-            
+
             <div class="mb-3">
                 <div class="text-muted">Video Name</div>
                 <?php echo $model->video_name ?>
             </div>
-            
+
             <?= $form->field($model, 'status')->dropDownList($model->getStatusLabels()) ?>
 
         </div>

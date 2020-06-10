@@ -7,13 +7,13 @@ use yii\helpers\Url;
 */
 ?>
 <div class="jumbotron">
-  <h1 class="display-4"><?php echo $channel->username ?></h1>
-  <hr class="my-4">
-  <?php Pjax::begin() ?>
+    <h1 class="display-4"><?php echo $channel->username ?></h1>
+    <hr class="my-4">
+    <?php Pjax::begin() ?>
     <?php echo $this->render('_subscribe', [
         'channel' => $channel
     ]); ?>
-  <?php Pjax::end() ?>
+    <?php Pjax::end() ?>
 </div>
 
 <?php echo \yii\widgets\ListView::widget([

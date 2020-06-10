@@ -49,15 +49,15 @@ class VideoController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Video::find()
-            ->creator(Yii::$app->user->id)
-            ->latest()
+                ->creator(Yii::$app->user->id)
+                ->latest()
         ]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
     }
-  
+
     /**
      * Creates a new video model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -67,7 +67,7 @@ class VideoController extends Controller
     {
         $model = new Video();
         $model->video = UploadedFile::getInstanceByName('video');
-        
+
         if (Yii::$app->request->isPost && $model->save()) {
             return $this->redirect(['update', 'id' => $model->video_id]);
         }

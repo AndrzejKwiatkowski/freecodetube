@@ -28,4 +28,3 @@ use yii\bootstrap4\NavBar;
         'items' => $menuItems,
     ]);
     NavBar::end();
-?>

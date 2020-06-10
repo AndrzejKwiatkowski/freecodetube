@@ -4,15 +4,13 @@
  */
 use yii\helpers\Url;
 ?>
-<a href="<?php echo Url::to(['/video/like', 'id' => $model->video_id])?>" 
+<a href="<?php echo Url::to(['/video/like', 'id' => $model->video_id])?>"
     class="btn btn-sm <?php echo $model->isLikedBy(Yii::$app->user->id) ? 'btn-outline-primary': 'btn-outline-secondary' ?>"
-    data-method="post"
-    data-pjax="1"><?php echo $model->getLikes()->count(); ?>
-<i class="fas fa-thumbs-up"></i>
+    data-method="post" data-pjax="1"><?php echo $model->getLikes()->count(); ?>
+    <i class="fas fa-thumbs-up"></i>
 </a>
-<a href="<?php echo Url::to(['/video/dislike', 'id' => $model->video_id])?>" 
+<a href="<?php echo Url::to(['/video/dislike', 'id' => $model->video_id])?>"
     class="btn btn-sm <?php echo $model->isDislikedBy(Yii::$app->user->id) ? 'btn-outline-primary': 'btn-outline-secondary' ?>"
-    data-method="post"
-    data-pjax="1"><?php echo $model->getDislikes()->count(); ?>
-<i class="fas fa-thumbs-down"></i>
+    data-method="post" data-pjax="1"><?php echo $model->getDislikes()->count(); ?>
+    <i class="fas fa-thumbs-down"></i>
 </a>
